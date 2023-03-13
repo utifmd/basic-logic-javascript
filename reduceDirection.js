@@ -1,8 +1,8 @@
 // const request = ["NORTH", "SOUTH", "EAST", "WEST", "EAST", "WEST"]
 // const request = ["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"]
-// const request = ["EAST","EAST","WEST","NORTH","WEST","EAST","EAST","SOUTH","NORTH","WEST"]
+const request = ["EAST","EAST","WEST","NORTH","WEST","EAST","EAST","SOUTH","NORTH","WEST"]
 
-const request = ["NORTH", "WEST", "SOUTH", "EAST"]
+// const request = ["NORTH", "WEST", "SOUTH", "EAST"]
 const response = _operate(request)
 console.log(response)
 
@@ -10,12 +10,13 @@ function _operate(params) {
     var opposite = {
         'NORTH': 'SOUTH', 'EAST': 'WEST', 'SOUTH': 'NORTH', 'WEST': 'EAST'
     };
-    return params.reduce((current, next) => {
-        current[current.length -1] !== opposite[next]
-        ? current.push(next)
-        : current.pop()
+    return params.reduce((prev, current) => {
+        const lastIndex = prev.length -1
+        prev[lastIndex] !== opposite[current]
+        ? prev.push(current)
+        : prev.pop()
 
-        return current;
+        return prev;
     }, []);
 }
 

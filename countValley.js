@@ -5,19 +5,19 @@ console.log(response)
 
 function _operate(params) {
     let seaLevel = 0
-    return params.reduce((current, next) => {
-        switch (next) {
+    return params.reduce((prev, current) => {
+        switch (current) {
             case "U":
                 seaLevel += 1
-                if(seaLevel === 0) current["valley"] += 1
+                if(seaLevel === 0) prev["valley"] += 1
                 break;
             case "D":
                 seaLevel -= 1
-                if(seaLevel === 0) current["mountain"] += 1
+                if(seaLevel === 0) prev["mountain"] += 1
                 break;
             default:
                 break;
         }
-        return current
+        return prev
     }, { mountain: 0, valley: 0 })
 }
