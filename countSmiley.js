@@ -2,7 +2,7 @@ const request = [':)', ';(', ';}', ':-D']
 const response = _operate(request)
 console.log(response)
 
-function _operate(params) {
+function _operateA(params) {
     let output = 0, 
         validSimley = ";D :D ;~D :~D ;-D :-D ;) :) ;~) :~) ;-) :-)"
     for (let i = 0; i < params.length; i++) {
@@ -11,9 +11,9 @@ function _operate(params) {
     }
     return output
 }
-function _operateA(params) {
+function _operate(params) {
     return params.reduce((prev, current) => {
-        if (current.match("-D")) prev += 1
+        if (/^[;:][~-]?[D)]$/.test(current)) prev += 1
         return prev
     }, 0)
 }
