@@ -42,23 +42,23 @@ const request = [
     ["X","#","#","A","R","H","S"],
     ["R","#","K","#","?","S","H"]
 ]
-// const response = _operate(request, 21)
-const response = _operate(request, 7)
+const response = _operate(request, 21)
+// const response = _operate(request, 7)
 
 console.log(response)
 
-function _operate(params, energy) {
+function _operate(params, threshold) {
     let output = {}
     for (let i = 0; i < params.length; i++) {
         for (let j = 0; j < params[i].length; j++) {
-            energy--
+            threshold--
             if (params[i][j] !== 'H' && params[i][j] !== 'R' && params[i][j] !== 'S') continue
-            if (energy < 0) continue
+            if (threshold < 0) break
             output[params[i][j]] = params[i][j] ? i +1 : 1
         }
     }
     let result = []
-    for(let item of Object.entries(output)){
+    for(let item of Object.entries(output)) {
         let left = item[0] === 'R' ? 'Revolver' : item[0] === 'H' ? 'Handgun' : 'Shotgun'
         result.push([left, item[1]])
     }
